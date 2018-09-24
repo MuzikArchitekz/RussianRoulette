@@ -1,0 +1,256 @@
+//Colors
+$primary: #262121;
+$accentOne: #16a085;
+$accentTwo: #f1c40f;
+$accentThree: #f39c12;
+$vida: #3498db;
+$purple: #8e44ad;
+$midnight: #2c3e50;
+$color-white: whiteSmoke;
+$color-black: #111111;
+$color-red: #CF000F;
+$button: #2c3e50;
+$light: lighten(#f1f2f3, 90%);
+$dark: darken($color-white,15%);
+
+//Fonts
+@import url('https://fonts.googleapis.com/css?family=Nosifer');
+$base-font-family: 'Crimson Text', serif;
+$title-font-family: 'Poppins', sans-serif;
+$creepy-font: 'Nosifer', cursive;
+$base-font-size: 1em;
+$title-font-size: 400%;
+$base-padding: 2em;
+$base-line-height: 1.5em;
+$base-margin: 2em;
+$block-padding: 3em 4em;
+$button-padding: 1em 2em;
+$base-border-radius: 10px;
+
+html {
+  box-sizing: border-box;
+}
+
+*, *::after, *::before {
+  box-sizing: inherit;
+}
+
+body {
+  min-height: 100vh;
+  width: 100%;
+  font-family: $creepy-font;
+  font-size: $base-font-size;
+  background: $color-red;
+  overflow-x: hidden;
+}
+
+h1 {
+  font-size: 400%;
+  color: $accentTwo;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+span {
+  color: $color-red;
+}
+
+
+h2 {
+  font-size: 200%;
+  color: $color-white;
+  text-align: center;
+  margin-bottom: 0.5em;
+}
+
+p {
+  text-align: center;
+  color: white;
+  font-family: $base-font-family;
+  font-size: 2em;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 3em;
+}
+
+.result {
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+  color: $color-white;
+  z-index: 40;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5em;
+  display: none;
+}
+
+.muerte {
+  font-family: $creepy-font;
+  background: $color-red;
+}
+
+.vida {
+  font-family: $title-font-family;
+  background: $vida;
+}
+
+.wrapper {
+  background: $primary;
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.main {
+  width: 500px;
+  height: 500px;
+  position: relative;
+}
+
+.running {
+  animation: roulette 0.8s linear both;
+  animation-iteration-count: 5;
+  animation-play-state: running;
+}
+
+.outer {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.outer > div {
+  width: 50%;
+  height:50%;
+  float: left;
+  border: 1pt solid white;
+  cursor: pointer;
+}
+
+.outer > div:nth-child(1) {
+  background: $color-black;
+  border-radius: 100% 0 0 0;
+  position: relative;
+}
+
+.outer > div:nth-child(2) {
+  background: $color-red;
+  border-radius: 0 100% 0 0;
+}
+
+.outer > div:nth-child(3) {
+  background: orange;
+  border-radius: 0 0 0 100%;
+}
+
+.outer > div:nth-child(4) {
+  background: $vida;
+  border-radius: 0 0 100% 0;
+}
+
+.inner {
+  background: $primary;
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  border: 5pt solid $color-white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+//======= ICONS ============
+@mixin icons(){
+  font-size: 2em;
+  color: $color-white;
+  position: absolute;
+  animation: sizing 1.5s linear alternate infinite;
+  animation-play-state: running;
+}
+
+.fa-frown-o {
+  @include icons();
+  left: 45%;
+  top: 35%;
+}
+
+.fa-bomb {
+  @include icons();
+  right: 20%;
+  top: 18%;
+}
+
+.fa-thumbs-down {
+  @include icons();
+  left: 22%;
+  top: 70%;
+}
+
+.fa-thumbs-up {
+  @include icons();
+  right: 20%;
+  top: 72%;
+}
+
+
+
+.btn {
+  background: $accentTwo;
+  border: none;
+  padding: 1em 2em;
+  color: $color-black;
+  font-family: 'Nosifer', cursive;
+  font-weight: 500;
+  cursor: pointer;
+  position: absolute;
+  z-index: 30;
+  top: 50%;
+  left: 50%;
+  transform: 
+    translate(-50%, -50%);
+  transition: all .2s linear;
+  &:hover{
+    background: $color-red;
+    color: $color-white;
+  }
+}
+
+.btn--result {
+  margin-top: 6em;
+  &:hover{
+    background: $color-black;
+    color: $color-white;
+  }
+}
+
+//Animations
+@keyframes roulette {
+  from { transform: rotate(0deg) }
+  to { transform: rotate(360deg) }
+}
+
+@keyframes sizing {
+  from { transform: scale(1) }
+  to { transform: scale(1.7) }
+}
+
+//Media queries
+@media (max-width: 768px) {
+  h1 {
+  font-size: 200%;
+  }
+
+  h2 {
+  font-size: 90%;
+  margin-bottom: 1em;
+  }
+}
